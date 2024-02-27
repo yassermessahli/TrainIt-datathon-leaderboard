@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train-it leaderboard</title>
+    <script>
+        // Function to reload the page
+        function reloadPage() {
+            location.reload();
+        }
+    
+        // Set interval to reload the page at regular intervals
+        setInterval(reloadPage, 20000); // Refresh every 20 seconds
+    </script>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Team</th>
+            {% for c in competitions %}
+                <th>{{ c }}</th>
+            {% endfor %}
+        </tr>
+        {% for team in global_rank %}
+            <tr>
+                <td>{{ team.rank }}</td>
+                <td>{{ team.team }}</td>
+                {% for r in team.all_ranks.values %}
+                    <td>{{ r }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+</body>
+</html>
